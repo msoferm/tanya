@@ -1,0 +1,18 @@
+# מסד נתונים PostgreSQL למערכת הלידים.
+# הרצה:  docker compose up -d
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tanya_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tanya_leads
+      POSTGRES_USER: tanya_user
+      POSTGRES_PASSWORD: tanya_secret_2024
+    ports:
+      - "5433:5432"
+    volumes:
+      - tanya_pgdata:/var/lib/postgresql/data
+
+volumes:
+  tanya_pgdata:

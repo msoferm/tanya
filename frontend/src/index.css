@@ -1,0 +1,253 @@
+/* ===== מערכת ניהול לידים - אקדמיה לתניא =====
+   ערכת צבעים: שחור / לבן / ירוק rgb(7,153,101) */
+
+:root {
+  --green: rgb(7, 153, 101);
+  --green-dark: rgb(5, 120, 79);
+  --green-light: rgba(7, 153, 101, 0.12);
+  --black: #111315;
+  --gray-900: #1f2426;
+  --gray-700: #4b5563;
+  --gray-500: #6b7280;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --white: #ffffff;
+  --red: #dc2626;
+  --amber: #f59e0b;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', 'Rubik', Arial, sans-serif;
+  background: var(--gray-100);
+  color: var(--black);
+  direction: rtl;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--green); text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+/* ===== פריסה ===== */
+.app-shell { display: flex; min-height: 100vh; }
+.main-area { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.page { padding: 24px 28px; flex: 1; }
+.page-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+}
+.page-title { font-size: 22px; font-weight: 700; }
+.page-subtitle { color: var(--gray-500); font-size: 13px; margin-top: 2px; }
+
+/* ===== סרגל צד ===== */
+.sidebar {
+  width: 240px; background: var(--black); color: var(--white);
+  display: flex; flex-direction: column; flex-shrink: 0;
+}
+.sidebar-brand {
+  padding: 22px 20px; font-size: 18px; font-weight: 700;
+  border-bottom: 1px solid var(--gray-900); display: flex; align-items: center; gap: 10px;
+}
+.sidebar-brand .dot {
+  width: 12px; height: 12px; border-radius: 50%; background: var(--green);
+}
+.sidebar-nav { padding: 12px 10px; flex: 1; }
+.nav-item {
+  display: flex; align-items: center; gap: 11px; width: 100%;
+  padding: 11px 14px; border: none; background: none; color: #cbd5d8;
+  border-radius: 8px; font-size: 14px; text-align: right; margin-bottom: 2px;
+}
+.nav-item:hover { background: var(--gray-900); color: var(--white); }
+.nav-item.active { background: var(--green); color: var(--white); font-weight: 600; }
+.nav-icon { font-size: 17px; width: 22px; text-align: center; }
+.sidebar-footer {
+  padding: 14px 18px; border-top: 1px solid var(--gray-900); font-size: 12px; color: var(--gray-500);
+}
+
+/* ===== כותרת עליונה ===== */
+.topbar {
+  background: var(--white); border-bottom: 1px solid var(--gray-200);
+  padding: 12px 28px; display: flex; justify-content: space-between; align-items: center;
+}
+.topbar-user { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.avatar {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--green);
+  color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;
+}
+
+/* ===== כרטיסים ===== */
+.card {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 18px; margin-bottom: 16px;
+}
+.card-title { font-weight: 700; font-size: 15px; margin-bottom: 14px; }
+
+.stat-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px; margin-bottom: 18px;
+}
+.stat-card {
+  background: var(--white); border-radius: var(--radius); padding: 18px;
+  box-shadow: var(--shadow); border-top: 3px solid var(--green);
+}
+.stat-value { font-size: 28px; font-weight: 700; }
+.stat-label { color: var(--gray-500); font-size: 13px; margin-top: 4px; }
+
+/* ===== כפתורים ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 8px; border: 1px solid transparent;
+  font-size: 13.5px; font-weight: 600; background: var(--gray-100); color: var(--black);
+}
+.btn:hover { background: var(--gray-200); }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-dark { background: var(--black); color: #fff; }
+.btn-dark:hover { background: var(--gray-900); }
+.btn-danger { background: #fef2f2; color: var(--red); border-color: #fecaca; }
+.btn-danger:hover { background: #fee2e2; }
+.btn-ghost { background: transparent; }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-wa { background: #25d366; color: #fff; }
+.btn-wa:hover { background: #1da851; }
+
+/* ===== טפסים ===== */
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 5px; color: var(--gray-700); }
+.input, .select, .textarea {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--gray-300);
+  border-radius: 8px; font-size: 13.5px; background: #fff;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light);
+}
+.textarea { resize: vertical; min-height: 70px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.checkbox-row input { width: 16px; height: 16px; accent-color: var(--green); }
+
+/* ===== טבלה ===== */
+.table-wrap { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th {
+  background: var(--gray-50); text-align: right; padding: 11px 12px;
+  font-size: 12px; color: var(--gray-500); font-weight: 700;
+  border-bottom: 1px solid var(--gray-200); white-space: nowrap;
+}
+td { padding: 11px 12px; border-bottom: 1px solid var(--gray-100); font-size: 13px; }
+tbody tr:hover { background: var(--gray-50); }
+tbody tr.selected { background: var(--green-light); }
+.table-empty { padding: 40px; text-align: center; color: var(--gray-500); }
+
+/* ===== תגיות ===== */
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 600; color: #fff; white-space: nowrap;
+}
+.badge-soft { background: var(--gray-100); color: var(--gray-700); }
+.tag-customer { background: var(--green); color: #fff; }
+.role-pill {
+  font-size: 11px; padding: 2px 8px; border-radius: 6px;
+  background: var(--gray-100); color: var(--gray-700);
+}
+
+/* ===== סרגל סינון ===== */
+.filter-bar {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: end;
+  background: #fff; padding: 14px; border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-bottom: 14px;
+}
+.filter-bar .field { margin-bottom: 0; }
+.filter-bar .input, .filter-bar .select { min-width: 150px; }
+.search-box { flex: 1; min-width: 220px; }
+
+/* ===== מודאל ===== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 40px 16px; z-index: 100; overflow-y: auto;
+}
+.modal {
+  background: #fff; border-radius: 12px; width: 100%; max-width: 620px;
+  box-shadow: var(--shadow-lg);
+}
+.modal-header {
+  padding: 16px 20px; border-bottom: 1px solid var(--gray-200);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.modal-header h3 { font-size: 16px; }
+.modal-body { padding: 20px; }
+.modal-footer {
+  padding: 14px 20px; border-top: 1px solid var(--gray-200);
+  display: flex; justify-content: flex-start; gap: 10px;
+}
+.modal-close { background: none; border: none; font-size: 22px; color: var(--gray-500); }
+
+/* ===== מסך התחברות ===== */
+.login-screen {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--black), var(--gray-900));
+}
+.login-card {
+  background: #fff; border-radius: 16px; padding: 36px; width: 380px;
+  box-shadow: var(--shadow-lg);
+}
+.login-logo {
+  text-align: center; margin-bottom: 24px;
+}
+.login-logo .mark {
+  width: 56px; height: 56px; border-radius: 14px; background: var(--green);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 10px;
+}
+.login-logo h1 { font-size: 19px; }
+.login-logo p { color: var(--gray-500); font-size: 13px; margin-top: 3px; }
+
+/* ===== כללי ===== */
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.spread { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.muted { color: var(--gray-500); }
+.error-msg { background: #fef2f2; color: var(--red); padding: 9px 12px; border-radius: 8px; font-size: 13px; }
+.success-msg { background: var(--green-light); color: var(--green-dark); padding: 9px 12px; border-radius: 8px; font-size: 13px; }
+.loading { padding: 40px; text-align: center; color: var(--gray-500); }
+.hint { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+.divider { height: 1px; background: var(--gray-200); margin: 16px 0; }
+.code-box {
+  background: var(--gray-900); color: #7ee7c0; padding: 10px 12px;
+  border-radius: 8px; font-family: 'Courier New', monospace; font-size: 12px;
+  word-break: break-all; direction: ltr; text-align: left;
+}
+.pagination { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 14px; }
+
+/* ===== הודעת Toast ===== */
+.toast-stack { position: fixed; bottom: 20px; left: 20px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: var(--black); color: #fff; padding: 11px 16px; border-radius: 8px;
+  box-shadow: var(--shadow-lg); font-size: 13px; min-width: 220px;
+}
+.toast.success { background: var(--green-dark); }
+.toast.error { background: var(--red); }
+
+/* ===== תזכורות ===== */
+.reminder-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px; border: 1px solid var(--gray-200); border-radius: 10px; margin-bottom: 8px;
+}
+.reminder-item.overdue { border-color: #fecaca; background: #fef2f2; }
+.reminder-item.done { opacity: 0.55; }
+.reminder-time { font-weight: 700; color: var(--green-dark); }
+
+@media (max-width: 720px) {
+  .sidebar { width: 64px; }
+  .sidebar-brand span, .nav-item span:last-child, .sidebar-footer { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
