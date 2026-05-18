@@ -87,11 +87,11 @@ export default function Statuses() {
           <tbody>
             {list.map((s) => (
               <tr key={s.id}>
-                <td><span className="badge" style={{ background: s.color }}>{s.name}</span></td>
-                <td>{s.leads_count}</td>
-                <td>{s.sort_order}</td>
-                <td>{s.is_won ? '✓' : ''}</td>
-                <td>
+                <td data-label="סטטוס"><span className="badge" style={{ background: s.color }}>{s.name}</span></td>
+                <td data-label="לידים">{s.leads_count}</td>
+                <td data-label="סדר">{s.sort_order}</td>
+                <td data-label="סגר / רכש">{s.is_won ? '✓' : '—'}</td>
+                <td data-label="פעולות">
                   <div className="row">
                     <button className="btn btn-sm" onClick={() => edit(s)}>עריכה</button>
                     <button className="btn btn-sm btn-danger" onClick={() => remove(s)}>מחק</button>

@@ -12,21 +12,23 @@ const NAV = [
   { to: '/settings', icon: '⚙️', label: 'הגדרות ואינטגרציות', roles: ['super_admin'] },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ open, onClose }) {
   const { user } = useAuth();
   const items = NAV.filter((n) => n.roles.includes(user.role));
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${open ? 'open' : ''}`}>
       <div className="sidebar-brand">
         <span className="dot" />
         <span>אקדמיה לתניא</span>
+        <button className="sidebar-x" aria-label="סגירה" onClick={onClose}>×</button>
       </div>
       <nav className="sidebar-nav">
         {items.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
+            onClick={onClose}
             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
           >
             <span className="nav-icon">{item.icon}</span>

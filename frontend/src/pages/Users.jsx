@@ -65,13 +65,13 @@ export default function Users() {
           <tbody>
             {list.map((u) => (
               <tr key={u.id}>
-                <td><strong>{u.name}</strong></td>
-                <td dir="ltr">{u.email}</td>
-                <td><span className="role-pill">{ROLE_LABELS[u.role]}</span></td>
-                <td dir="ltr">{u.phone || '—'}</td>
-                <td>{u.leads_count}</td>
-                <td>{u.is_active ? '✓' : '—'}</td>
-                <td>
+                <td data-label="שם"><strong>{u.name}</strong></td>
+                <td data-label="מייל" dir="ltr">{u.email}</td>
+                <td data-label="תפקיד"><span className="role-pill">{ROLE_LABELS[u.role]}</span></td>
+                <td data-label="טלפון" dir="ltr">{u.phone || '—'}</td>
+                <td data-label="לידים">{u.leads_count}</td>
+                <td data-label="פעיל">{u.is_active ? '✓' : '—'}</td>
+                <td data-label="פעולות">
                   <div className="row">
                     <button className="btn btn-sm" onClick={() => openEdit(u)}>עריכה</button>
                     <button className="btn btn-sm btn-danger" onClick={() => remove(u)}>מחק</button>

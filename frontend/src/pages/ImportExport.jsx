@@ -179,9 +179,9 @@ export default function ImportExport() {
                   <tbody>
                     {realErrors.map((e, i) => (
                       <tr key={i}>
-                        <td>{e.row || '—'}</td>
-                        <td>{e.reason}</td>
-                        <td dir="ltr">{e.value || ''}</td>
+                        <td data-label="שורה">{e.row || '—'}</td>
+                        <td data-label="בעיה">{e.reason}</td>
+                        <td data-label="ערך" dir="ltr">{e.value || ''}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -246,12 +246,12 @@ export default function ImportExport() {
             <tbody>
               {logs.map((l) => (
                 <tr key={l.id}>
-                  <td>{new Date(l.created_at).toLocaleString('he-IL')}</td>
-                  <td>{l.filename}</td>
-                  <td>{l.user_name || '—'}</td>
-                  <td>{l.total_rows}</td>
-                  <td>{l.imported}</td>
-                  <td>{l.skipped}</td>
+                  <td data-label="תאריך">{new Date(l.created_at).toLocaleString('he-IL')}</td>
+                  <td data-label="קובץ">{l.filename}</td>
+                  <td data-label="משתמש">{l.user_name || '—'}</td>
+                  <td data-label="שורות">{l.total_rows}</td>
+                  <td data-label="יובאו">{l.imported}</td>
+                  <td data-label="דולגו">{l.skipped}</td>
                 </tr>
               ))}
             </tbody>

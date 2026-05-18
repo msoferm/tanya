@@ -221,12 +221,12 @@ export default function Leads() {
             ) : data.leads.map((l) => (
               <tr key={l.id} className={selected.has(l.id) ? 'selected' : ''}
                 onClick={() => setModal({ leadId: l.id })} style={{ cursor: 'pointer' }}>
-                <td onClick={(e) => e.stopPropagation()}>
+                <td data-label="בחירה" onClick={(e) => e.stopPropagation()}>
                   <input type="checkbox" checked={selected.has(l.id)}
                     onChange={() => toggleSelect(l.id)} />
                 </td>
-                <td><strong>{l.name || '—'}</strong></td>
-                <td onClick={(e) => e.stopPropagation()}>
+                <td data-label="שם"><strong>{l.name || '—'}</strong></td>
+                <td data-label="טלפון" onClick={(e) => e.stopPropagation()}>
                   <div className="row" style={{ gap: 6 }}>
                     <span dir="ltr">{l.phone || '—'}</span>
                     {l.whatsapp && (
@@ -235,22 +235,22 @@ export default function Leads() {
                     )}
                   </div>
                 </td>
-                <td dir="ltr">{l.email || '—'}</td>
-                <td>
+                <td data-label="מייל" dir="ltr">{l.email || '—'}</td>
+                <td data-label="סטטוס">
                   {l.status_name
                     ? <span className="badge" style={{ background: l.status_color }}>{l.status_name}</span>
                     : <span className="badge badge-soft">ללא</span>}
                 </td>
-                <td>{l.utm_source || l.source || '—'}</td>
-                {canAssign && <td>{l.assigned_to_name || <span className="muted">לא משויך</span>}</td>}
-                <td>{fmt(l.created_at)}</td>
-                <td>{fmt(l.updated_at)}</td>
-                <td>{l.is_customer ? <span className="badge tag-customer">רכש</span> : ''}</td>
-                <td onClick={(e) => e.stopPropagation()}>
-                  {canAssign && (
-                    <button className="btn btn-sm btn-danger"
-                      onClick={(e) => removeLead(l.id, e)}>מחק</button>
-                  )}
+                <td data-label="מקור">{l.utm_source || l.source || '—'}</td>
+                {canAssign && <td data-label="טלפן">{l.assigned_to_name || <span className="muted">לא משויך</span>}</td>}
+                <td data-label="נרשם">{fmt(l.created_at)}</td>
+                <td data-label="עודכן">{fmt(l.updated_at)}</td>
+                <td data-label="רכש">{l.is_customer ? <span className="badge tag-customer">רכש</span> : '—'}</td>
+                <td data-label="פעולות" onClick={(e) => e.stopPropagation()}>
+                  {canAssign
+                    ? <button className="btn btn-sm btn-danger"
+                        onClick={(e) => removeLead(l.id, e)}>מחק</button>
+                    : <span className="muted">—</span>}
                 </td>
               </tr>
             ))}

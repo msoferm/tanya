@@ -42,7 +42,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dash-grid">
         <div className="card">
           <div className="card-title">לידים לפי סטטוס</div>
           {byStatus.map((s) => (
@@ -88,10 +88,10 @@ export default function Dashboard() {
             <tbody>
               {byAgent.map((a) => (
                 <tr key={a.id}>
-                  <td><strong>{a.name}</strong></td>
-                  <td>{a.total}</td>
-                  <td>{a.today}</td>
-                  <td>{a.customers}</td>
+                  <td data-label="טלפן"><strong>{a.name}</strong></td>
+                  <td data-label="סך לידים">{a.total}</td>
+                  <td data-label="נכנסו היום">{a.today}</td>
+                  <td data-label="רכשו">{a.customers}</td>
                 </tr>
               ))}
             </tbody>
