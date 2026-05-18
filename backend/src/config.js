@@ -1,8 +1,9 @@
 require('dotenv').config();
 
 module.exports = {
-  port: process.env.PORT || 5000,
-  corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  // PORT אינו נקרא מ-.env בכוונה - הוא שמור ע"י Cloud Run בפרודקשן.
+  port: process.env.PORT || 5001,
+  corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5174',
   jwt: {
     secret: process.env.JWT_SECRET || 'dev_insecure_secret',
     expiresIn: process.env.JWT_EXPIRES_IN || '12h',
