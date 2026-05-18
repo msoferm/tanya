@@ -7,6 +7,32 @@
 
 ---
 
+## 🌐 האתר החי
+
+**https://tanya-cc32b.web.app**
+
+| רכיב | פלטפורמה |
+|------|-----------|
+| ממשק (Frontend) | Firebase Hosting |
+| שרת ה-API (Backend) | Firebase Cloud Functions — פונקציה `api` |
+| מסד נתונים | Supabase (PostgreSQL) |
+| קוד מקור | https://github.com/msoferm/tanya |
+
+### עדכון גרסה (פריסה מחדש)
+
+לאחר שינוי בקוד, מהתיקייה הראשית:
+
+```bash
+firebase deploy            # פורס Frontend + Backend
+firebase deploy --only hosting     # רק הממשק
+firebase deploy --only functions   # רק השרת
+```
+
+> דרוש קובץ `backend/.env` מקומי (מכיל את חיבור ה-Supabase והסודות) —
+> הוא לא נשמר ב-git. אם משכתם את הקוד מ-GitHub, צרו אותו מתוך `backend/.env.example`.
+
+---
+
 ## תוכן
 
 - [סוגי משתמשים](#סוגי-משתמשים)
